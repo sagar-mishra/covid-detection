@@ -5,7 +5,7 @@ from models.base_conv_net_model import BaseConvNet
 from util.model_ready_data_creator import ModelReadyDataCreator
 from util.inference_util import load_model, calculate_accuracy
 
-def run():
+def test():
     """
     function to calculate accuracy over test data
     """
@@ -30,4 +30,4 @@ def run():
 
 
 if __name__ == "__main__":
-    run()
+    test()

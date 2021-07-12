@@ -18,10 +18,10 @@ def main():
         print("Provide the correct image path")
         sys.exit()
 
-    run(image_path)
+    inference(image_path)
 
 
-def run(image_path):
+def inference(image_path):
     
     current_model_weight_path = os.path.join(config.MODEL_PATH, config.MODEL_NAME)
     check_point_path = os.path.join(current_model_weight_path, config.CHECKPOINT_NAME)

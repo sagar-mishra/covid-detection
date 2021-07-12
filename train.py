@@ -90,7 +90,7 @@ def training(model, loss_function, optimizer, scheduler, model_ready_data_creato
     model.load_state_dict(best_model_weights)
     return model, train_loss_values, train_accuracy_values, val_loss_values, val_accuracy_values
 
-def run():
+def train():
     model_ready_data_creator = ModelReadyDataCreator(config.TEST_PATH, config.VAL_PATH, config.TEST_PATH, config.DATA_PATH, config.MODEL_PATH, height=config.IMAGE_SIZE[0], width=config.IMAGE_SIZE[1], batch_size=config.BATCH_SIZE)
     model = BaseConvNet(model_name="baseConvNet",num_classes=config.NUM_OF_CLASSES)
     model = model.to(config.TRAIN_DEVICE)
@@ -104,4 +104,4 @@ def run():
     best_model, train_loss_values, train_accuracy_values, val_loss_values, val_accuracy_values = training(model, loss_function, optimizer, one_cycle_scheduler, model_ready_data_creator, another_scheduler = reduce_lr_scheduler, num_epochs = config.EPOCHS)
 
 if __name__ == "__main__":
-    run()
+    train()
