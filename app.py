@@ -1,11 +1,14 @@
+import numpy as np
 import config
 import os
 import torch
 import cv2
+from PIL import Image
 from models.base_conv_net_model import BaseConvNet
 from util.inference_util import load_model, predict
 from flask import Flask
 from flask import request
+from flask import jsonify
 
 app = Flask(__name__)
 
@@ -18,12 +21,29 @@ Device = config.INFERENCE_DEVICE
 def welcome():
     return "hello"
 
-@app.route("/predict")
+@app.route("/predict", methods=["POST"])
 def do_prediction():
-    image_path = request.args.get("image_path")
-    image = cv2.imread(image_path)
-    prediction = predict(MODEL, image, IDX_TO_CLASS, height=config.IMAGE_SIZE[0], width=config.IMAGE_SIZE[1])
-    return f"Prediction is : {prediction}"
+    image_path = request.files['image']
+
+    image = Image.open(image_path.stream)
+    opencvImage = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
+    if opencvImage is None : 
+        response_data = {
+            "message" : "Provide valid image path"
+        }
+        status_code = 400
+    else:
+        prediction = predict(MODEL, image, IDX_TO_CLASS, height=config.IMAGE_SIZE[0], width=config.IMAGE_SIZE[1])
+        if prediction == "covid":
+            message  = "Person is infected by covid"
+        else:
+            message = "Person is normal"
+            
+        response_data = {
+            "message" : message
+        }
+        status_code = 200
+    return jsonify(response_data), status_code
 
 if __name__ == "__main__":
 
@@ -35,4 +55,4 @@ if __name__ == "__main__":
     CLASS_TO_IDX = check_point["class_to_idx"]
     IDX_TO_CLASS = check_point['idx_to_class']
 
-    app.run()
+    app.run(host='0.0.0.0', port=5000)
