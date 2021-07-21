@@ -1,7 +1,7 @@
 app:
-  name: covid-detection-app
+  name: covid-detection
   env: dev
-  namespace: covid-detection-app-namespace
+  namespace: covid-detection-app
   image: gcr.io/covid-detection-319916/mishrasagar25/covid-detection-api
 
 replicas: 2
