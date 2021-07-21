@@ -20,10 +20,13 @@ http://localhost:5000/predict
 
 NOTE : Use POST method and set content-type to multipart/form-data in header and in body select form-data and in key enter **image** and set type as file and then select file.
 
-<h2> Sample Examples </h2>
+<h2> Sample Cases </h2>
 
-* ![Covid example](resources/images/covid_example.PNG)
-* ![Normal example](resources/images/normal_example.PNG)
+* Covid Detected patient Case : 
+![Covid example](resources/images/covid_example.PNG)
+
+* Normal patient Case : 
+![Normal example](resources/images/normal_example.PNG)
 
 
 
