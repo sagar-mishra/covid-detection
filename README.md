@@ -1,6 +1,6 @@
 # covid-detection
 
-Covid detection using CNN deep learning architecture, here we are considering two classes i.e Covid and Normal therefore it is a binary image classification problem.
+Covid detection using CNN deep learning architecture, here we are considering two classes i.e Covid and Normal therefore it is a binary image classification problem. This is a simple project to learn deployment techniques (docker, kubernetes). It is not recommended to deploy over real time environment.
 
 Data Sources : <br/>
 Covid data : https://github.com/ieee8023/covid-chestxray-dataset <br/>
