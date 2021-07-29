@@ -52,7 +52,8 @@ def train_loop(model, data_loader, optimizer, scheduler, loss_function, device=t
             # torch.nn.CrossEntropyLoss(weight=None, size_average=None, ignore_index=-100, reduce=None, reduction='mean')
             # Hence, loss.item() contains the loss of entire mini-batch, but divided by the batch size. That's why loss.item() is multiplied with batch size, given by inputs.size(0), while calculating running_loss.
             # here we'll get mean of loss of entire batch using loss.item() that's why we are multiplying it with batch_ size to get current loss.
-            current_loss = loss.item() * inputs.size(0)
+            # Hence, loss.item() contains the loss of entire mini-batch, but divided by the batch size. That's why loss.item() is multiplied with batch size, given by inputs.size(0), while calculating running_loss
+            current_loss += loss.item() * inputs.size(0)
             current_corrects += torch.sum(preds == labels.data)
 
     return current_loss, current_corrects
@@ -93,7 +94,7 @@ def eval_loop(model, data_loader, loss_function, device=torch.device("cuda")):
             _,preds = torch.max(outputs,1)
             loss = loss_function(outputs, labels)
 
-            current_loss = loss.item() * inputs.size(0)
+            current_loss += loss.item() * inputs.size(0)
             current_corrects += torch.sum(preds == labels.data)
 
             # convert targets and outputs to lists
