@@ -6,8 +6,8 @@
 * [Technologies](#technologies)
 * [Setup](#setup)
 * [Running](#running)
-* [Sample Cases](#cases)
-* [Kubernetes Deployment](#deployment)
+* [Sample Cases](#sample-cases)
+* [Kubernetes Deployment](#kubernetes-deployment)
 
 ## General info
 Covid detection using CNN deep learning architecture, here we are considering two classes i.e Covid and Normal therefore it is a binary image classification problem. This is a simple project to learn deployment techniques (docker, kubernetes). It is not recommended to deploy on real time environment.
