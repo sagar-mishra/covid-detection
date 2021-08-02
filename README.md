@@ -1,12 +1,33 @@
 # covid-detection
 
+## Table of contents
+* [General info](#general-info)
+* [Data Sources](#data-sources)
+* [Technologies](#technologies)
+* [Setup](#setup)
+* [Running](#running)
+* [Sample Cases](#sample-cases)
+* [Kubernetes Deployment](#kubernetes-deployment)
+
+## General info
 Covid detection using CNN deep learning architecture, here we are considering two classes i.e Covid and Normal therefore it is a binary image classification problem. This is a simple project to learn deployment techniques (docker, kubernetes). It is not recommended to deploy on real time environment.
 
-Data Sources : <br/>
+## Data Sources 
 Covid data : https://github.com/ieee8023/covid-chestxray-dataset <br/>
 Normal data : https://www.kaggle.com/paultimothymooney/chest-xray-pneumonia <br/>
 
-<h3> To Run this project </h3> 
+
+## Technologies
+* PyTorch
+* Python
+* Flask
+
+## Setup
+
+### Installation 
+* pip install requirements.txt
+
+## Running
 
 * Pull the docker image from docker hub : <br/>
 docker pull mishrasagar25/covid-detection-api:latest
@@ -20,9 +41,8 @@ http://localhost:5000/predict
 
 NOTE : Use POST method and set content-type to multipart/form-data in header and in body select form-data and in key enter **image** and set type as file and then select file.
 
-<hr>
 
-<h2> Sample Cases </h2>
+## Sample Cases
 
 * Covid detected patient case : 
 ![Covid example](resources/images/covid_example.PNG)
@@ -31,7 +51,7 @@ NOTE : Use POST method and set content-type to multipart/form-data in header and
 ![Normal example](resources/images/normal_example.PNG)
 
 
-<hr>
+## Kubernetes Deployment
 
 I have also deployed this project on **Google Kubernetes Engine** .
 
