@@ -6,7 +6,7 @@ import config
 import torch.optim as optim
 import torch.nn as nn
 from torch.optim.lr_scheduler import OneCycleLR, ReduceLROnPlateau
-from util.engine import train_loop,eval_loop,loss_function
+from util.train_util import train_loop,eval_loop,loss_function
 from util.model_ready_data_creator import ModelReadyDataCreator
 from models.base_conv_net_model import BaseConvNet
 from sklearn import metrics
